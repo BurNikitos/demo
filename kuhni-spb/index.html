@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Кромка: кухни на заказ в Санкт-Петербурге по цене за погонный метр</title>
+<meta name="description" content="Мастерская «Кромка»: кухни на заказ в Санкт-Петербурге. Цена за погонный метр с замером, проектом, доставкой и сборкой. Бесплатный выезд замерщика.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #EDF1F3;
+  --sheet: #FFFFFF;
+  --ink: #16233F;
+  --muted: #56637A;
+  --line: #C5CED8;
+  --pencil: #2456D6;
+  --oak: #C99A5B;
+  --display: "Jost", "Century Gothic", sans-serif;
+  --body: "Onest", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+}
+h1, h2, h3, p, ol, ul, dl, dd, figure, fieldset, blockquote { margin: 0; padding: 0; }
+fieldset { border: 0; min-width: 0; }
+legend { padding: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--pencil); outline-offset: 3px; }
+
+.wrap { max-width: 76rem; margin: 0 auto; padding: 0 1.25rem; }
+
+/* Шапка */
+.top { display: flex; align-items: center; gap: 2.25rem; padding-top: 1.25rem; padding-bottom: 1.25rem; }
+.logo {
+  font: 600 1.625rem/1 var(--display);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  padding-bottom: 0.3rem;
+  border-bottom: 4px solid var(--oak);
+}
+.top nav { display: flex; gap: 1.5rem; margin-right: auto; }
+.top nav a { text-decoration: none; color: var(--muted); }
+.top nav a:hover { color: var(--ink); }
+.phone { font-weight: 600; text-decoration: none; white-space: nowrap; }
+
+/* Кнопка */
+.btn {
+  display: inline-block;
+  border: 0;
+  background: var(--ink);
+  color: var(--sheet);
+  font: 600 1.0625rem/1 var(--body);
+  padding: 1.05rem 1.6rem;
+  border-radius: 3px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover { background: #0B1630; }
+
+/* Первый экран */
+.hero { padding-top: 2.5rem; padding-bottom: 4.5rem; }
+.hero-head {
+  display: grid;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+  gap: 3rem;
+  align-items: end;
+  margin-bottom: 2.5rem;
+}
+h1 {
+  font: 500 clamp(2.5rem, 5.6vw, 4.5rem)/1 var(--display);
+  letter-spacing: -0.025em;
+  max-width: 16ch;
+}
+.lead { font-size: 1.1875rem; line-height: 1.5; padding-bottom: 0.4rem; }
+
+/* Калькулятор с чертежом */
+.bench {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  background: var(--sheet);
+  border-top: 6px solid var(--oak);
+}
+.bench-draw { display: flex; flex-direction: column; padding: 2rem; border-right: 1px solid var(--line); }
+.bench h2 { font: 500 1.75rem/1.15 var(--display); letter-spacing: -0.01em; }
+#elev { display: block; width: 100%; margin-top: auto; padding-top: 1.5rem; box-sizing: content-box; }
+.legend { color: var(--muted); font-size: 0.9375rem; margin-top: 0.75rem; }
+.bench-form { display: flex; flex-direction: column; align-items: flex-start; padding: 2rem; }
+.bench-form .field { width: 100%; }
+.bench-form .btn { margin-top: auto; }
+.field { margin-bottom: 1.5rem; }
+.field-name { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-weight: 500; margin-bottom: 0.6rem; }
+.field-name output { font: 500 1.5rem/1 var(--display); white-space: nowrap; }
+input[type="range"] { width: 100%; accent-color: var(--pencil); margin: 0; }
+.seg { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.seg label { cursor: pointer; }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg span { display: block; padding: 0.55rem 0.9rem; border: 1px solid var(--line); border-radius: 3px; font-weight: 500; line-height: 1.35; }
+.field-name small { font-size: 0.875rem; font-weight: 400; color: var(--muted); }
+legend.field-name { width: 100%; }
+.seg small { display: block; font-size: 0.875rem; font-weight: 400; color: var(--muted); }
+.seg input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--sheet); }
+.seg input:checked + span small { color: #C2CBDB; }
+.seg input:focus-visible + span { outline: 3px solid var(--pencil); outline-offset: 3px; }
+.total { padding-top: 1rem; }
+.total-sum { font: 500 clamp(2.5rem, 4.6vw, 3.5rem)/1 var(--display); letter-spacing: -0.02em; white-space: nowrap; }
+.total-note { color: var(--muted); margin-top: 0.6rem; max-width: 34em; }
+
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; margin-top: 2.5rem; }
+.facts dt { font: 500 1.75rem/1.1 var(--display); letter-spacing: -0.01em; }
+.facts dd { color: var(--muted); max-width: 22em; }
+
+/* Чертежи: общие правила для вида спереди и планов */
+.dwg .cab { stroke: var(--ink); stroke-width: 1.2; }
+.dwg .wall { fill: none; stroke: var(--ink); stroke-width: 5; }
+.dwg .floor { stroke: var(--ink); stroke-width: 1.5; }
+.dwg .seam { fill: none; stroke: var(--ink); stroke-width: 1; }
+.dwg .ghost { fill: none; stroke: var(--ink); stroke-width: 1; stroke-dasharray: 3 2.5; }
+.dwg .dim { fill: none; stroke: var(--pencil); stroke-width: 1; }
+.dwg text { font: italic 500 12px var(--display); fill: var(--pencil); text-anchor: middle; }
+#elev text { font-size: 14px; }
+
+/* Разделы */
+.section { padding-top: 5rem; padding-bottom: 5rem; }
+.section.on-sheet { background: var(--sheet); }
+.section h2, .request h2 {
+  font: 500 clamp(2rem, 4.2vw, 3.25rem)/1.05 var(--display);
+  letter-spacing: -0.02em;
+  max-width: 20ch;
+  margin-bottom: 1rem;
+}
+.section-lead { max-width: 38em; color: var(--muted); margin-bottom: 2.5rem; }
+
+/* Цены */
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; vertical-align: top; padding: 1.1rem 1.5rem 1.1rem 0; border-bottom: 1px solid var(--line); }
+thead th { font-weight: 500; color: var(--muted); font-size: 0.9375rem; }
+tbody th { font-weight: 600; width: 20%; }
+td:last-child { white-space: nowrap; padding-right: 0; }
+.price { font: 500 1.625rem/1.15 var(--display); white-space: nowrap; }
+.included { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem 2.5rem; margin-top: 3rem; }
+.included b { display: block; font-weight: 600; }
+.included li { color: var(--muted); }
+.included b { color: var(--ink); }
+.extra { margin-top: 2rem; max-width: 38em; border-left: 4px solid var(--oak); padding-left: 1rem; }
+
+/* Кухни */
+.objects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; }
+.plan { display: block; width: 100%; height: auto; background: var(--sheet); margin-bottom: 1.25rem; }
+.objects h3 { font: 500 1.5rem/1.2 var(--display); letter-spacing: -0.01em; margin-bottom: 0.25rem; }
+.objects .where { color: var(--muted); margin-bottom: 1rem; }
+.objects dl div { display: flex; justify-content: space-between; gap: 1rem; padding: 0.5rem 0; border-top: 1px solid var(--line); }
+.objects dt { color: var(--muted); }
+.objects dd { font-weight: 500; text-align: right; }
+
+/* Отзывы */
+.reviews { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; }
+.reviews figure { border-left: 4px solid var(--oak); padding-left: 1.25rem; }
+.reviews blockquote { margin-bottom: 1.25rem; }
+.reviews figcaption { color: var(--muted); }
+.reviews figcaption b { display: block; font-weight: 600; color: var(--ink); }
+
+/* Этапы */
+.steps { list-style: none; counter-reset: step; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 2rem; }
+.steps li { counter-increment: step; border-top: 1px solid var(--ink); padding-top: 1rem; }
+.steps li::before { content: counter(step); display: block; font: 500 2.75rem/1 var(--display); margin-bottom: 0.75rem; }
+.steps h3 { font: 600 1.0625rem/1.35 var(--body); margin-bottom: 0.4rem; }
+.steps p { color: var(--muted); font-size: 0.9375rem; }
+
+/* Заявка */
+.request { background: var(--ink); color: var(--sheet); border-top: 6px solid var(--oak); }
+.request :focus-visible { outline-color: var(--oak); }
+.request-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3.5rem; padding-top: 5rem; padding-bottom: 5rem; }
+.request p { color: #C2CBDB; max-width: 30em; }
+.request form { display: grid; gap: 1.25rem; }
+.request label { display: grid; gap: 0.4rem; font-weight: 500; }
+.request input[type="text"], .request input[type="tel"] {
+  font: 400 1.0625rem/1.2 var(--body);
+  padding: 0.9rem 1rem;
+  border: 1px solid #62708C;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--sheet);
+}
+.request input::placeholder { color: #8E9AB1; }
+.request .summary { border-left: 4px solid var(--oak); padding-left: 1rem; color: var(--sheet); }
+.request .btn { background: var(--sheet); color: var(--ink); justify-self: start; }
+.request .btn:hover { background: var(--paper); }
+.request .small { font-size: 0.875rem; }
+.request .done { border-left: 4px solid var(--oak); padding-left: 1rem; font-size: 1.25rem; color: var(--sheet); }
+
+/* Подвал */
+.foot { display: flex; flex-wrap: wrap; gap: 1rem 3rem; padding-top: 2rem; padding-bottom: 2rem; color: var(--muted); font-size: 0.9375rem; }
+.foot .demo { margin-left: auto; }
+
+@media (max-width: 60rem) {
+  .hero-head, .bench, .request-grid { grid-template-columns: minmax(0, 1fr); }
+  .hero-head { gap: 1.25rem; }
+  .request-grid { gap: 2.5rem; }
+  .bench-draw { border-right: 0; border-bottom: 1px solid var(--line); }
+  .objects, .reviews { grid-template-columns: minmax(0, 1fr); max-width: 30rem; }
+  .included { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .top nav { display: none; }
+  .top { justify-content: space-between; gap: 1rem; }
+}
+@media (max-width: 34rem) {
+  .steps, .included, .facts { grid-template-columns: minmax(0, 1fr); }
+  .facts { gap: 1.25rem; }
+  .bench-draw, .bench-form { padding: 1.25rem; }
+  thead { display: none; }
+  tbody tr, tbody th, tbody td { display: block; width: auto; }
+  tbody tr { border-bottom: 1px solid var(--line); padding: 1rem 0; }
+  tbody th, tbody td { border: 0; padding: 0.2rem 0; }
+  .section, .request-grid { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .hero { padding-bottom: 3.5rem; }
+  .foot .demo { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="oak" width="7" height="40" patternUnits="userSpaceOnUse">
+      <rect width="7" height="40" fill="#D3A768"/>
+      <path d="M1.5 0V40M4.5 0Q5.7 20 4.5 40" fill="none" stroke="#B48848" stroke-width=".7"/>
+    </pattern>
+  </defs>
+</svg>
+
+<header class="wrap top">
+  <a class="logo" href="#">Кромка</a>
+  <nav aria-label="Разделы">
+    <a href="#prices">Цены</a>
+    <a href="#objects">Кухни</a>
+    <a href="#reviews">Отзывы</a>
+    <a href="#steps">Этапы</a>
+  </nav>
+  <a class="phone" href="tel:+78120000000">+7 (812) 000-00-00</a>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-head">
+        <h1>Кухни на заказ в Петербурге по цене за погонный метр</h1>
+        <p class="lead">Мы мастерская со своим цехом. Говорим цену за метр кухни сразу, а после замера записываем итог в договор и больше его не меняем.</p>
+      </div>
+
+      <form class="bench" id="calc" aria-labelledby="calc-title">
+        <div class="bench-draw">
+          <h2 id="calc-title">Сколько стоит ваша кухня</h2>
+          <div class="total" aria-live="polite">
+            <div class="total-sum" id="sum"></div>
+            <p class="total-note" id="note"></p>
+          </div>
+          <svg class="dwg" id="elev" role="img" aria-label="Чертёж кухни, вид спереди"></svg>
+          <p class="legend">Вид спереди, размеры в миллиметрах. Пунктиром показана духовка: техника в цену не входит.</p>
+        </div>
+
+        <div class="bench-form">
+          <div class="field">
+            <label class="field-name" for="len">Длина кухни <output id="len-out" for="len">3,6 пог. м</output></label>
+            <input type="range" id="len" min="2" max="8" step="0.1" value="3.6">
+          </div>
+
+          <fieldset class="field">
+            <legend class="field-name">Фасады <small>цена за пог. м</small></legend>
+            <div class="seg">
+              <label><input type="radio" name="facade" value="ldsp"><span>ЛДСП<small>38 000 ₽</small></span></label>
+              <label><input type="radio" name="facade" value="mdf" checked><span>МДФ в эмали<small>62 000 ₽</small></span></label>
+              <label><input type="radio" name="facade" value="oak"><span>Шпон дуба<small>95 000 ₽</small></span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="field">
+            <legend class="field-name">Столешница <small>цена за пог. м</small></legend>
+            <div class="seg">
+              <label><input type="radio" name="top" value="plastic" checked><span>Пластик<small>входит в цену</small></span></label>
+              <label><input type="radio" name="top" value="quartz"><span>Кварц<small>+18 000 ₽</small></span></label>
+            </div>
+          </fieldset>
+
+          <a class="btn" href="#request">Вызвать замерщика</a>
+        </div>
+      </form>
+
+      <dl class="facts">
+        <div><dt>12 лет</dt><dd>делаем кухни в своём цехе на Обуховской Обороны</dd></div>
+        <div><dt>640 кухонь</dt><dd>собрали в Петербурге и ближайшей области</dd></div>
+        <div><dt>2 года</dt><dd>гарантии на корпуса, фасады и сборку</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section on-sheet" id="prices">
+    <div class="wrap">
+      <h2>Цена за погонный метр и что в неё входит</h2>
+      <p class="section-lead">Погонный метр считаем по длине кухни вдоль стены. В метр входят нижние и верхние шкафы и столешница из пластика.</p>
+      <table>
+        <thead>
+          <tr><th scope="col">Фасады</th><th scope="col">Что это</th><th scope="col">Цена</th><th scope="col">Срок изготовления</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">ЛДСП</th>
+            <td>Ламинированная плита 16 мм с кромкой. Недорого и практично, около сорока декоров на выбор.</td>
+            <td class="price">38 000 ₽/пог. м</td>
+            <td>4 недели</td>
+          </tr>
+          <tr>
+            <th scope="row">МДФ в эмали</th>
+            <td>Крашеный МДФ 19 мм, матовый или глянцевый. Любой цвет по вееру, можно с фрезеровкой.</td>
+            <td class="price">62 000 ₽/пог. м</td>
+            <td>6 недель</td>
+          </tr>
+          <tr>
+            <th scope="row">Шпон дуба</th>
+            <td>МДФ под натуральным шпоном, покрытие маслом или лаком. Рисунок дерева подбираем от фасада к фасаду.</td>
+            <td class="price">95 000 ₽/пог. м</td>
+            <td>7 недель</td>
+          </tr>
+          <tr>
+            <th scope="row">Столешница из кварца</th>
+            <td>Ставим вместо пластиковой. Искусственный камень 20 мм, не боится горячей сковороды и ножа.</td>
+            <td class="price">+18 000 ₽/пог. м</td>
+            <td>плюс 1 неделя</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ul class="included">
+        <li><b>Замер</b>Приезжаем с лазерным дальномером, снимаем стены, углы, трубы и розетки.</li>
+        <li><b>Проект</b>Чертёж с размерами и вид в объёме. Правим, пока вы не согласуете.</li>
+        <li><b>Корпуса</b>ЛДСП 16 мм, кромка 2 мм на всех видимых торцах.</li>
+        <li><b>Фурнитура</b>Петли и ящики с доводчиками, ручки или профиль на выбор.</li>
+        <li><b>Доставка</b>По городу и до 20 км за КАД, с подъёмом на этаж.</li>
+        <li><b>Сборка</b>Собираем кухню, врезаем мойку и варочную панель, вешаем вытяжку.</li>
+      </ul>
+      <p class="extra">Цена указана без техники, мойки и смесителя. Их вы покупаете сами. Размеры под них скажем заранее и встроим всё при сборке.</p>
+    </div>
+  </section>
+
+  <section class="section" id="objects">
+    <div class="wrap">
+      <h2>Три кухни, которые мы собрали в этом году</h2>
+      <p class="section-lead">Планы сверху в одном масштабе, размеры в миллиметрах. Пунктиром показаны мойка и варочная панель. Суммы можно проверить на калькуляторе.</p>
+      <div class="objects">
+
+        <article>
+          <svg class="plan dwg" viewBox="0 0 300 190" role="img" aria-label="План прямой кухни длиной 3200 мм">
+            <path class="wall" d="M38 190V38H300"/>
+            <rect class="cab" x="41" y="41" width="128" height="24" fill="#DDE3E8"/>
+            <path class="seam" d="M65 41v24M89 41v24M113 41v24M137 41v24"/>
+            <circle class="ghost" cx="77" cy="53" r="7"/>
+            <rect class="ghost" x="116" y="45" width="18" height="16"/>
+            <path class="dim" d="M41 14v20M169 14v20M41 20H169M38 23l6-6M166 23l6-6"/>
+            <text x="105" y="15">3 200</text>
+            <path class="dim" d="M173 41h18M173 65h18M185 41V65M182 44l6-6M182 68l6-6"/>
+            <text x="205" y="57">600</text>
+          </svg>
+          <h3>Прямая, 3,2 пог. м</h3>
+          <p class="where">Приморский район, студия в новостройке</p>
+          <dl>
+            <div><dt>Фасады</dt><dd>ЛДСП</dd></div>
+            <div><dt>Столешница</dt><dd>Пластик</dd></div>
+            <div><dt>Срок изготовления</dt><dd>4 недели</dd></div>
+            <div><dt>Сумма по договору</dt><dd>121 600 ₽</dd></div>
+          </dl>
+        </article>
+
+        <article>
+          <svg class="plan dwg" viewBox="0 0 300 190" role="img" aria-label="План угловой кухни: 2600 мм вдоль одной стены и 2200 мм вдоль другой">
+            <path class="wall" d="M38 190V38H300"/>
+            <path class="cab" d="M41 41H145V65H65V129H41Z" fill="#5B9485"/>
+            <path class="seam" d="M65 41v24M89 41v24M113 41v24M41 65h24M41 97h24"/>
+            <circle class="ghost" cx="53" cy="81" r="7"/>
+            <rect class="ghost" x="92" y="45" width="18" height="16"/>
+            <path class="dim" d="M41 14v20M145 14v20M41 20H145M38 23l6-6M142 23l6-6"/>
+            <text x="93" y="15">2 600</text>
+            <path class="dim" d="M14 41h20M14 129h20M20 41V129M17 44l6-6M17 132l6-6"/>
+            <text x="14" y="85" transform="rotate(-90 14 85)">2 200</text>
+          </svg>
+          <h3>Угловая, 4,8 пог. м</h3>
+          <p class="where">Купчино, кирпичный дом 1970-х</p>
+          <dl>
+            <div><dt>Фасады</dt><dd>МДФ в эмали</dd></div>
+            <div><dt>Столешница</dt><dd>Кварц</dd></div>
+            <div><dt>Срок изготовления</dt><dd>7 недель</dd></div>
+            <div><dt>Сумма по договору</dt><dd>384 000 ₽</dd></div>
+          </dl>
+        </article>
+
+        <article>
+          <svg class="plan dwg" viewBox="0 0 300 190" role="img" aria-label="План кухни с островом: 4200 мм вдоль стены, остров 1800 мм, проход 1100 мм">
+            <path class="wall" d="M38 190V38H300"/>
+            <rect class="cab" x="41" y="41" width="168" height="24" fill="url(#oak)"/>
+            <path class="seam" d="M65 41v24M89 41v24M113 41v24M137 41v24M161 41v24M185 41v24"/>
+            <rect class="cab" x="89" y="109" width="72" height="36" fill="url(#oak)"/>
+            <circle class="ghost" cx="108" cy="127" r="7"/>
+            <rect class="ghost" x="116" y="45" width="18" height="16"/>
+            <path class="dim" d="M41 14v20M209 14v20M41 20H209M38 23l6-6M206 23l6-6"/>
+            <text x="125" y="15">4 200</text>
+            <path class="dim" d="M89 149v22M161 149v22M89 165H161M86 168l6-6M158 168l6-6"/>
+            <text x="125" y="160">1 800</text>
+            <path class="dim" d="M213 65h18M165 109h66M225 65V109M222 68l6-6M222 112l6-6"/>
+            <text x="248" y="91">1 100</text>
+          </svg>
+          <h3>С островом, 6 пог. м</h3>
+          <p class="where">Петроградская сторона, кухня-гостиная</p>
+          <dl>
+            <div><dt>Фасады</dt><dd>Шпон дуба</dd></div>
+            <div><dt>Столешница</dt><dd>Кварц</dd></div>
+            <div><dt>Срок изготовления</dt><dd>8 недель</dd></div>
+            <div><dt>Сумма по договору</dt><dd>678 000 ₽</dd></div>
+          </dl>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-sheet" id="reviews">
+    <div class="wrap">
+      <h2>Отзывы хозяев этих кухонь</h2>
+      <p class="section-lead">Попросили написать как было, вместе с тем, что не понравилось.</p>
+      <div class="reviews">
+        <figure>
+          <blockquote>Кухня нужна была в студию под сдачу, без лишних трат. Предложили ЛДСП и не уговаривали на дорогое. В договоре стояли те же 121 600, что я насчитала на сайте. Сборщик провозился с вытяжкой и ушёл в девятом часу вечера, зато короб закрыл аккуратно.</blockquote>
+          <figcaption><b>Марина</b>Прямая кухня 3,2 м, Приморский район</figcaption>
+        </figure>
+        <figure>
+          <blockquote>У нас угол между стенами расходится на два сантиметра. Замерщик заметил это сам и заложил в проект, столешницу подгоняли уже на месте. Эмаль ждали семь недель, как в договоре. Один фасад приехал со сколом, заменили через девять дней.</blockquote>
+          <figcaption><b>Алексей</b>Угловая кухня 4,8 м, Купчино</figcaption>
+        </figure>
+        <figure>
+          <blockquote>Долго сомневались насчёт острова, боялись, что будет не пройти. В проекте нарисовали проход 110 сантиметров, мы походили по комнате с рулеткой и согласились. Шпон подобрали так, что рисунок идёт через все фасады. Недёшево, но за восемь недель цена не поменялась.</blockquote>
+          <figcaption><b>Ирина и Павел</b>Кухня с островом 6 м, Петроградская сторона</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="steps">
+    <div class="wrap">
+      <h2>От замера до приёмки</h2>
+      <p class="section-lead">Половину платите при подписании договора, вторую после сборки, когда всё проверили.</p>
+      <ol class="steps">
+        <li><h3>Замер</h3><p>Замерщик приезжает бесплатно и привозит образцы фасадов и столешниц. Снимает стены, углы, трубы и розетки.</p></li>
+        <li><h3>Проект и договор</h3><p>За три дня рисуем чертёж и вид в объёме. Цену и срок записываем в договор.</p></li>
+        <li><h3>Изготовление</h3><p>Пилим и кромим корпуса, красим или шпонируем фасады в своём цехе. От 4 до 8 недель.</p></li>
+        <li><h3>Доставка и сборка</h3><p>Привозим, поднимаем и собираем за один или два дня. Встраиваем технику, врезаем мойку.</p></li>
+        <li><h3>Приёмка и гарантия</h3><p>Вместе открываем каждый ящик и дверцу, подписываем акт. С этого дня идёт гарантия 2 года.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="request" id="request">
+    <div class="wrap request-grid">
+      <div>
+        <h2>Вызвать замерщика</h2>
+        <p>Приедем в удобный день с образцами, замерим кухню и на месте уточним расчёт. Выезд бесплатный по городу и до 20 км за КАД.</p>
+      </div>
+      <form id="request-form">
+        <p class="summary" id="summary"></p>
+        <label>Как к вам обращаться
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+        <label>Телефон
+          <input type="tel" name="phone" autocomplete="tel" placeholder="+7 (___) ___-__-__" required>
+        </label>
+        <button class="btn" type="submit">Вызвать замерщика</button>
+        <p class="small">Перезвоним в течение часа с 9:00 до 21:00.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <span>Мастерская кухонь «Кромка», Санкт-Петербург</span>
+  <span>Ежедневно с 9:00 до 21:00</span>
+  <a href="tel:+78120000000">+7 (812) 000-00-00</a>
+  <span class="demo">Демонстрационный сайт. Компания, объекты, отзывы и цены вымышлены.</span>
+</footer>
+
+<script>
+const RATES = { ldsp: 38000, mdf: 62000, oak: 95000 };
+const WEEKS = { ldsp: 4, mdf: 6, oak: 7 };
+const NAMES = { ldsp: 'ЛДСП', mdf: 'МДФ в эмали', oak: 'шпон дуба' };
+const FILLS = { ldsp: '#DDE3E8', mdf: '#5B9485', oak: 'url(#oak)' };
+const QUARTZ = 18000;
+
+const calc = document.getElementById('calc');
+const len = document.getElementById('len');
+const elev = document.getElementById('elev');
+const rub = n => n.toLocaleString('ru-RU') + ' ₽';
+const weeksWord = n => n === 4 ? 'недели' : 'недель';
+
+/* Вид спереди в масштабе: стена шириной 8 метров и высотой 2,5 метра */
+function draw(m) {
+  const W = elev.clientWidth;
+  if (!W) return;
+  const narrow = W < 480;
+  const x0 = 10;
+  const k = (W - x0 - (narrow ? 10 : 60)) / 8;
+  const y0 = 2 + 2.5 * k;
+  const H = y0 + 44;
+  const x1 = x0 + m * k;
+  const fill = FILLS[calc.elements.facade.value];
+  const quartz = calc.elements.top.value === 'quartz';
+  const r = n => n.toFixed(1);
+
+  const n = Math.floor(m / 0.6 + 1e-9);
+  const rest = m - n * 0.6;
+  const widths = Array(n).fill(0.6);
+  if (rest > 0.29) widths.push(rest); else widths[n - 1] += rest;
+
+  let s = `<path class="wall" d="M${x0 - 3} 1V${r(y0)}"/><path class="floor" d="M0 1H${W}M0 ${r(y0)}H${W}"/>`;
+  let x = x0;
+  widths.forEach((w, i) => {
+    const wk = w * k;
+    s += `<rect class="cab" x="${r(x)}" y="${r(y0 - 2.14 * k)}" width="${r(wk)}" height="${r(0.72 * k)}" fill="${fill}"/>`;
+    s += `<rect class="cab" x="${r(x)}" y="${r(y0 - 0.82 * k)}" width="${r(wk)}" height="${r(0.72 * k)}" fill="${fill}"/>`;
+    if (i === 0) s += `<path class="seam" d="M${r(x)} ${r(y0 - 0.58 * k)}h${r(wk)}M${r(x)} ${r(y0 - 0.34 * k)}h${r(wk)}"/>`;
+    if (i === 1) s += `<rect x="${r(x + 0.05 * k)}" y="${r(y0 - 0.74 * k)}" width="${r(wk - 0.1 * k)}" height="${r(0.52 * k)}" fill="#fff" stroke="none"/>` +
+      `<rect class="ghost" x="${r(x + 0.05 * k)}" y="${r(y0 - 0.74 * k)}" width="${r(wk - 0.1 * k)}" height="${r(0.52 * k)}"/>`;
+    x += wk;
+  });
+  const th = Math.max(3, 0.04 * k);
+  const yt = y0 - 0.82 * k - th;
+  s += `<rect x="${x0}" y="${r(y0 - 0.1 * k)}" width="${r(m * k)}" height="${r(0.1 * k)}" fill="#16233F"/>`;
+  s += `<rect class="cab" x="${x0}" y="${r(yt)}" width="${r(m * k)}" height="${r(th)}" fill="${quartz ? '#16233F' : '#fff'}"/>`;
+
+  const yd = y0 + 30;
+  s += `<path class="dim" d="M${x0} ${r(y0 + 5)}V${r(yd + 6)}M${r(x1)} ${r(y0 + 5)}V${r(yd + 6)}M${x0} ${r(yd)}H${r(x1)}` +
+    `M${x0 - 4} ${r(yd + 4)}l8-8M${r(x1 - 4)} ${r(yd + 4)}l8-8"/>`;
+  s += `<text x="${r((x0 + x1) / 2)}" y="${r(yd - 6)}">${(Math.round(m * 100) * 10).toLocaleString('ru-RU')}</text>`;
+
+  if (!narrow) {
+    const xv = x1 + 24;
+    const ym = (y0 + yt) / 2;
+    s += `<path class="dim" d="M${r(x1 + 5)} ${r(yt)}H${r(xv + 6)}M${r(xv)} ${r(yt)}V${r(y0)}` +
+      `M${r(xv - 4)} ${r(yt + 4)}l8-8M${r(xv - 4)} ${r(y0 + 4)}l8-8"/>`;
+    s += `<text x="${r(xv + 20)}" y="${r(ym + 5)}">860</text>`;
+  }
+
+  elev.setAttribute('viewBox', `0 0 ${W} ${r(H)}`);
+  elev.setAttribute('height', r(H));
+  elev.innerHTML = s;
+}
+
+function update() {
+  const m = Number(len.value);
+  const facade = calc.elements.facade.value;
+  const quartz = calc.elements.top.value === 'quartz';
+  const rate = RATES[facade] + (quartz ? QUARTZ : 0);
+  const sum = Math.round(m * 10) * rate / 10;
+  const term = WEEKS[facade] + (quartz ? 1 : 0);
+  const metres = m.toFixed(1).replace('.', ',') + ' пог. м';
+  const top = quartz ? 'столешница из кварца' : 'столешница из пластика';
+
+  document.getElementById('len-out').textContent = metres;
+  document.getElementById('sum').textContent = 'от ' + rub(sum);
+  document.getElementById('note').textContent =
+    'Срок изготовления ' + term + ' ' + weeksWord(term) +
+    '. Техника и мойка в цену не входят.';
+  document.getElementById('summary').textContent =
+    'Ваш расчёт: кухня ' + metres + ', фасады ' + NAMES[facade] + ', ' + top +
+    ', от ' + rub(sum) + ', срок ' + term + ' ' + weeksWord(term) + '.';
+  elev.setAttribute('aria-label', 'Чертёж кухни, вид спереди, длина ' + metres);
+  draw(m);
+}
+
+calc.addEventListener('input', update);
+window.addEventListener('resize', () => draw(Number(len.value)));
+update();
+
+/* Один раз при загрузке кухня вырастает от 2 метров до выбранной длины */
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const target = Number(len.value);
+    let touched = false;
+  calc.addEventListener('input', () => { touched = true; }, { once: true });
+  draw(2);
+  let start;
+  requestAnimationFrame(function grow(now) {
+    if (touched) return;
+    start = start || now;
+    const t = Math.min(1, (now - start) / 900);
+    draw(2 + (target - 2) * (1 - Math.pow(1 - t, 3)));
+    if (t < 1) requestAnimationFrame(grow);
+  });
+}
+
+const form = document.getElementById('request-form');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const done = document.createElement('p');
+  done.className = 'done';
+  done.setAttribute('role', 'status');
+  done.textContent = 'Заявка на замер принята. Перезвоним в течение часа.';
+  form.replaceWith(done);
+});
+</script>
+</body>
+</html>
