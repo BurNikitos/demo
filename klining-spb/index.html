@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Насухо — уборка квартир в Санкт-Петербурге с оплатой после приёмки</title>
+<meta name="description" content="Команда «Насухо»: поддерживающая и генеральная уборка квартир, уборка после ремонта в Санкт-Петербурге. Средства и оборудование привозим сами. Оплата после того, как вы приняли работу.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@200..700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F5F9FA;
+  --white: #FFFFFF;
+  --glass: #CBDCE6;
+  --ink: #132238;
+  --mute: #51647A;
+  --rule: #B9C9D3;
+  --glove: #FFD23F;
+  --font: "Geologica", system-ui, sans-serif;
+  --rest: clamp(1.75rem, 7vw, 7rem);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-weight: 350;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+}
+h1, h2, h3, p, ol, ul, dl, dd, figure, fieldset, blockquote { margin: 0; padding: 0; }
+fieldset { border: 0; min-width: 0; }
+legend { padding: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+.wrap { max-width: 75rem; margin: 0 auto; padding: 0 1.25rem; }
+
+/* Шапка */
+.top { display: flex; align-items: center; gap: 2rem; padding-top: 1.25rem; padding-bottom: 1.25rem; }
+.logo { font-weight: 600; font-size: 1.5rem; line-height: 1; letter-spacing: -0.03em; text-decoration: none; }
+.top nav { display: flex; gap: 1.5rem; margin-right: auto; }
+.top nav a { text-decoration: none; color: var(--mute); }
+.top nav a:hover { color: var(--ink); }
+.phone { font-weight: 500; text-decoration: none; white-space: nowrap; }
+
+/* Кнопка */
+.btn {
+  display: inline-block;
+  border: 0;
+  background: var(--glove);
+  color: var(--ink);
+  font: 500 1.0625rem/1 var(--font);
+  padding: 1.1rem 1.7rem;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover { background: #FFC400; }
+
+/* Первый экран: стекло и сгон */
+.pane {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(104deg,
+    var(--glass) 0 46%, #DCE9F0 46% 53%, var(--glass) 53% 57%, #DCE9F0 57% 59%, var(--glass) 59%);
+}
+.pane .wrap { padding-top: 4.5rem; padding-bottom: 4.5rem; padding-right: calc(var(--rest) + 1.25rem); }
+h1 {
+  font-weight: 250;
+  font-size: clamp(2.5rem, 6.6vw, 6rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  max-width: 15ch;
+}
+.fog {
+  position: absolute;
+  top: 0; bottom: 0; right: 0;
+  left: calc(100% - var(--rest));
+  background:
+    repeating-linear-gradient(93deg, rgba(255,255,255,0) 0 31px, rgba(255,255,255,0.2) 31px 38px, rgba(255,255,255,0) 38px 83px),
+    rgba(142, 163, 177, 0.6);
+  -webkit-backdrop-filter: blur(9px);
+  backdrop-filter: blur(9px);
+  animation: wipe 1.5s cubic-bezier(0.45, 0.05, 0.2, 1) 0.25s both;
+}
+/* Сгон: резинка и жёлтая планка */
+.fog::before {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 13px;
+  background: linear-gradient(90deg, var(--ink) 0 6px, var(--glove) 6px);
+}
+@keyframes wipe { from { left: 0; } }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 3.5rem;
+  padding-top: 3.5rem;
+  padding-bottom: 5rem;
+}
+.lead { font-size: 1.25rem; line-height: 1.5; max-width: 30em; }
+
+/* Чек-лист */
+.checks { list-style: none; display: grid; gap: 0.45rem; }
+.checks li { position: relative; padding-left: 1.6rem; }
+.checks li::before {
+  content: "";
+  position: absolute;
+  left: 0.15rem; top: 0.42em;
+  width: 0.75rem; height: 0.4rem;
+  border-left: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  transform: rotate(-45deg);
+}
+.promise { margin-top: 2.25rem; font-size: 1.125rem; gap: 0.9rem; max-width: 26em; }
+
+/* Калькулятор */
+.calc { background: var(--white); padding: 2rem; border: 1px solid var(--rule); border-radius: 6px; }
+.calc h2 { font: 500 1.25rem/1.3 var(--font); margin-bottom: 1.5rem; }
+.field { margin-bottom: 1.5rem; }
+.field-name { display: flex; justify-content: space-between; align-items: baseline; font-weight: 500; margin-bottom: 0.6rem; }
+.field-name output { font-weight: 300; font-size: 1.75rem; line-height: 1; letter-spacing: -0.03em; }
+input[type="range"] { width: 100%; accent-color: var(--ink); margin: 0; }
+.seg { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.seg label { cursor: pointer; }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg span { display: block; padding: 0.6rem 0.95rem; border: 1px solid var(--rule); border-radius: 6px; }
+.seg input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--white); }
+.seg input:focus-visible + span { outline: 3px solid var(--ink); outline-offset: 3px; }
+.total { border-top: 1px solid var(--ink); padding-top: 1.25rem; margin-top: 0.5rem; }
+.total-sum { font-weight: 250; font-size: clamp(2.75rem, 5.4vw, 4.25rem); line-height: 1; letter-spacing: -0.04em; }
+.total-team { font-weight: 500; margin-top: 0.75rem; }
+.total-note { color: var(--mute); margin: 0.25rem 0 1.5rem; }
+
+/* Разделы */
+.section { padding-top: 5rem; padding-bottom: 5rem; border-top: 1px solid var(--rule); }
+.section h2, .request h2 {
+  font-weight: 250;
+  font-size: clamp(2rem, 4.4vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  max-width: 20ch;
+  margin-bottom: 1rem;
+}
+.section-lead { max-width: 38em; color: var(--mute); margin-bottom: 2.5rem; }
+
+/* Цены */
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; vertical-align: top; padding: 1.25rem 1.5rem 1.25rem 0; border-bottom: 1px solid var(--rule); }
+th:last-child, td:last-child { padding-right: 0; }
+thead th { font-weight: 400; color: var(--mute); font-size: 0.9375rem; }
+tbody th { font-weight: 500; width: 20%; }
+.price { font-weight: 300; font-size: 1.625rem; line-height: 1.15; letter-spacing: -0.03em; white-space: nowrap; }
+.for60 { width: 17%; }
+
+/* Объекты */
+.objects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; }
+.plan { display: block; width: 100%; height: auto; background: var(--white); border: 1px solid var(--rule); border-radius: 6px; margin-bottom: 1.25rem; }
+.plan text { font: 400 9px var(--font); fill: var(--mute); }
+.objects h3 { font: 500 1.25rem/1.3 var(--font); margin-bottom: 0.25rem; }
+.objects .where { color: var(--mute); margin-bottom: 1rem; }
+.objects dl div { display: flex; justify-content: space-between; gap: 1rem; padding: 0.5rem 0; border-top: 1px solid var(--rule); }
+.objects dt { color: var(--mute); }
+.objects dd { font-weight: 500; text-align: right; }
+
+/* Отзывы */
+.reviews { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; }
+.reviews figure { border-top: 1px solid var(--ink); padding-top: 1.25rem; }
+.reviews blockquote { font-size: 1.125rem; margin-bottom: 1.25rem; }
+.reviews figcaption { color: var(--mute); }
+.reviews figcaption b { display: block; font-weight: 500; color: var(--ink); }
+
+/* Этапы */
+.steps { list-style: none; counter-reset: step; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; }
+.steps li { counter-increment: step; border-top: 1px solid var(--ink); padding-top: 1rem; }
+.steps li::before { content: counter(step); display: block; font-weight: 250; font-size: 3rem; line-height: 1; letter-spacing: -0.04em; margin-bottom: 0.75rem; }
+.steps h3 { font: 500 1.0625rem/1.35 var(--font); margin-bottom: 0.4rem; }
+.steps p { color: var(--mute); font-size: 0.9375rem; }
+
+/* Заявка */
+.request { background: var(--glass); }
+.request-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3.5rem; padding-top: 5rem; padding-bottom: 5rem; }
+.request-grid > div > p { max-width: 30em; }
+.request form { display: grid; gap: 1.25rem; }
+.request label { display: grid; gap: 0.4rem; font-weight: 500; }
+.request input[type="text"], .request input[type="tel"] {
+  font: 350 1.0625rem/1.2 var(--font);
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--mute);
+  border-radius: 6px;
+  background: var(--white);
+  color: var(--ink);
+}
+.request input::placeholder { color: #71839A; }
+.summary { border-left: 6px solid var(--ink); padding-left: 1rem; }
+.request .btn { justify-self: start; }
+.request .small { font-size: 0.875rem; }
+.done { border-left: 6px solid var(--ink); padding-left: 1rem; font-size: 1.25rem; align-self: start; }
+
+/* Подвал */
+.foot { display: flex; flex-wrap: wrap; gap: 1rem 3rem; padding-top: 2rem; padding-bottom: 2rem; color: var(--mute); font-size: 0.9375rem; }
+.foot .demo { margin-left: auto; }
+
+@media (max-width: 60rem) {
+  .hero-grid, .request-grid { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+  .objects, .reviews { grid-template-columns: minmax(0, 1fr); max-width: 30rem; }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .top nav { display: none; }
+  .top { justify-content: space-between; gap: 1rem; }
+}
+@media (max-width: 34rem) {
+  .steps { grid-template-columns: minmax(0, 1fr); }
+  .calc { padding: 1.25rem; }
+  .pane .wrap { padding-top: 3rem; padding-bottom: 3rem; }
+  thead { display: none; }
+  tbody tr, tbody th, tbody td { display: block; width: auto; }
+  tbody tr { border-bottom: 1px solid var(--rule); padding: 1.25rem 0; }
+  tbody th, tbody td { border: 0; padding: 0.3rem 0; }
+  tbody th { font-size: 1.125rem; }
+  .for60 { width: auto; }
+  .for60::before { content: "Для 60 м²: "; color: var(--mute); }
+  .section, .request-grid { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .hero-grid { padding-top: 2.5rem; padding-bottom: 3.5rem; }
+  .foot .demo { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fog { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="wrap top">
+  <a class="logo" href="#">Насухо</a>
+  <nav aria-label="Разделы">
+    <a href="#prices">Цены</a>
+    <a href="#objects">Объекты</a>
+    <a href="#reviews">Отзывы</a>
+    <a href="#steps">Этапы</a>
+  </nav>
+  <a class="phone" href="tel:+78120000000">+7 (812) 000-00-00</a>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="pane">
+      <div class="wrap">
+        <h1>Убираем квартиры в&nbsp;Петербурге. Платите, когда проверите</h1>
+      </div>
+      <div class="fog" aria-hidden="true"></div>
+    </div>
+
+    <div class="wrap hero-grid">
+      <div>
+        <p class="lead">Мы команда из двенадцати клинеров. Убираем по чек-листу, а деньги берём после того, как вы прошли по квартире и приняли работу.</p>
+        <ul class="checks promise">
+          <li>Приезжаем в назначенное время. Если задерживаемся, звоним заранее.</li>
+          <li>Средства, пылесос и стремянку привозим сами.</li>
+          <li>Что не понравилось при приёмке, переделываем сразу и без доплаты.</li>
+        </ul>
+      </div>
+
+      <form class="calc" id="calc" aria-labelledby="calc-title">
+        <h2 id="calc-title">Сколько стоит уборка вашей квартиры</h2>
+
+        <div class="field">
+          <label class="field-name" for="area">Площадь квартиры <output id="area-out" for="area">54&nbsp;м²</output></label>
+          <input type="range" id="area" min="20" max="150" step="1" value="54">
+        </div>
+
+        <fieldset class="field">
+          <legend class="field-name">Вид уборки</legend>
+          <div class="seg">
+            <label><input type="radio" name="kind" value="regular"><span>Поддерживающая</span></label>
+            <label><input type="radio" name="kind" value="deep" checked><span>Генеральная</span></label>
+            <label><input type="radio" name="kind" value="repair"><span>После ремонта</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend class="field-name">Окна</legend>
+          <div class="seg">
+            <label><input type="radio" name="windows" value="no" checked><span>Не мыть</span></label>
+            <label><input type="radio" name="windows" value="yes"><span>Помыть</span></label>
+          </div>
+        </fieldset>
+
+        <div class="total" aria-live="polite">
+          <div class="total-sum" id="sum"></div>
+          <p class="total-team" id="team"></p>
+          <p class="total-note" id="note"></p>
+        </div>
+        <a class="btn" href="#request">Заказать уборку</a>
+      </form>
+    </div>
+  </section>
+
+  <section class="section" id="prices">
+    <div class="wrap">
+      <h2>Что входит в каждую уборку</h2>
+      <p class="section-lead">Цены за метр площади квартиры. Минимальный заказ 3 500 ₽. Точную сумму называем по телефону до выезда, на месте она не меняется.</p>
+      <table>
+        <thead>
+          <tr><th scope="col">Вид уборки</th><th scope="col">Что делаем</th><th scope="col">Цена</th><th scope="col">Для квартиры 60&nbsp;м²</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Поддерживающая</th>
+            <td>
+              <ul class="checks">
+                <li>Вытираем пыль со всех открытых поверхностей</li>
+                <li>Пылесосим и моем полы</li>
+                <li>Чистим сантехнику, раковины и зеркала</li>
+                <li>На кухне моем столешницу, плиту и фасады снаружи</li>
+                <li>Выносим мусор</li>
+              </ul>
+            </td>
+            <td class="price">90 ₽/м²</td>
+            <td class="for60">1 человек, 4 часа</td>
+          </tr>
+          <tr>
+            <th scope="row">Генеральная</th>
+            <td>
+              <ul class="checks">
+                <li>Всё из поддерживающей уборки</li>
+                <li>Моем кухонные шкафы внутри, духовку и вытяжку</li>
+                <li>Чистим плитку и швы в ванной</li>
+                <li>Протираем плинтусы, двери, розетки и батареи</li>
+                <li>Пылесосим диваны и пол под мебелью</li>
+              </ul>
+            </td>
+            <td class="price">180 ₽/м²</td>
+            <td class="for60">2 человека, 4 часа</td>
+          </tr>
+          <tr>
+            <th scope="row">После ремонта</th>
+            <td>
+              <ul class="checks">
+                <li>Собираем строительную пыль промышленным пылесосом, в том числе со стен</li>
+                <li>Снимаем следы краски, клея, затирки и монтажной пены</li>
+                <li>Убираем плёнку и наклейки с окон, дверей и техники</li>
+                <li>Моем шкафы и ящики внутри</li>
+                <li>Полы моем два раза</li>
+              </ul>
+            </td>
+            <td class="price">250 ₽/м²</td>
+            <td class="for60">2 человека, 5 часов</td>
+          </tr>
+          <tr>
+            <th scope="row">Мытьё окон</th>
+            <td>Моем стёкла с двух сторон, рамы и подоконники во всей квартире. Считаем по площади квартиры, а не по числу окон.</td>
+            <td class="price">+25 ₽/м²</td>
+            <td class="for60">плюс около 2 часов работы</td>
+          </tr>
+          <tr>
+            <th scope="row">Средства и оборудование</th>
+            <td>Привозим сами: пылесос, парогенератор, стремянку, швабры, салфетки и моющие средства. Нужны средства без запаха или для дома с аллергиком, скажите при заказе.</td>
+            <td class="price">0 ₽</td>
+            <td class="for60">входит в любую уборку</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" id="objects">
+    <div class="wrap">
+      <h2>Три квартиры, которые мы убрали в этом месяце</h2>
+      <p class="section-lead">Суммы посчитаны по тем же ценам, что в таблице. Двойной линией на планах показаны окна.</p>
+      <div class="objects">
+
+        <article>
+          <svg class="plan" viewBox="0 0 200 140" role="img" aria-label="План однокомнатной квартиры">
+            <g fill="none" stroke="#132238" stroke-linecap="square">
+              <rect x="12" y="12" width="176" height="116" stroke-width="4"/>
+              <path d="M120 12 V128 M120 80 H188" stroke-width="2"/>
+            </g>
+            <path d="M120 40 V56 M120 98 V112" stroke="#FFFFFF" stroke-width="3"/>
+            <path d="M84 128 H106" stroke="#FFFFFF" stroke-width="5"/>
+            <path d="M40 12 H92 M138 12 H172" stroke="#FFFFFF" stroke-width="2"/>
+            <text x="46" y="74">комната</text>
+            <text x="140" y="50">кухня</text>
+            <text x="146" y="108">с/у</text>
+          </svg>
+          <h3>Однокомнатная, 38&nbsp;м²</h3>
+          <p class="where">Купчино, Бухарестская улица</p>
+          <dl>
+            <div><dt>Вид уборки</dt><dd>Поддерживающая</dd></div>
+            <div><dt>Кто приезжал</dt><dd>1 человек на 2,5 часа</dd></div>
+            <div><dt>Сумма</dt><dd>3 500 ₽</dd></div>
+          </dl>
+        </article>
+
+        <article>
+          <svg class="plan" viewBox="0 0 200 140" role="img" aria-label="План двухкомнатной квартиры">
+            <g fill="none" stroke="#132238" stroke-linecap="square">
+              <rect x="12" y="12" width="176" height="116" stroke-width="4"/>
+              <path d="M92 12 V128 M92 70 H188 M142 70 V128" stroke-width="2"/>
+            </g>
+            <path d="M92 32 V48 M92 92 V108 M142 92 V106" stroke="#FFFFFF" stroke-width="3"/>
+            <path d="M104 128 H126" stroke="#FFFFFF" stroke-width="5"/>
+            <path d="M12 28 V58 M12 82 V112 M116 12 H164" stroke="#FFFFFF" stroke-width="2"/>
+            <text x="30" y="74">гостиная</text>
+            <text x="120" y="46">спальня</text>
+            <text x="104" y="104">кухня</text>
+            <text x="158" y="104">с/у</text>
+          </svg>
+          <h3>Двухкомнатная, 58&nbsp;м²</h3>
+          <p class="where">Петроградская сторона, старый фонд</p>
+          <dl>
+            <div><dt>Вид уборки</dt><dd>Генеральная с окнами</dd></div>
+            <div><dt>Кто приезжал</dt><dd>2 человека на 4,5 часа</dd></div>
+            <div><dt>Сумма</dt><dd>11 890 ₽</dd></div>
+          </dl>
+        </article>
+
+        <article>
+          <svg class="plan" viewBox="0 0 200 140" role="img" aria-label="План трёхкомнатной квартиры">
+            <g fill="none" stroke="#132238" stroke-linecap="square">
+              <rect x="12" y="12" width="176" height="116" stroke-width="4"/>
+              <path d="M12 70 H188 M72 12 V70 M130 12 V70 M50 70 V128 M146 70 V128" stroke-width="2"/>
+            </g>
+            <path d="M54 70 H68 M94 70 H108 M132 70 H144 M50 92 V106 M146 92 V106" stroke="#FFFFFF" stroke-width="3"/>
+            <path d="M86 128 H108" stroke="#FFFFFF" stroke-width="5"/>
+            <path d="M26 12 H58 M86 12 H116 M144 12 H174 M188 86 V114" stroke="#FFFFFF" stroke-width="2"/>
+            <text x="22" y="44">спальня</text>
+            <text x="82" y="44">детская</text>
+            <text x="138" y="44">гостиная</text>
+            <text x="22" y="104">с/у</text>
+            <text x="74" y="104">прихожая</text>
+            <text x="152" y="118">кухня</text>
+          </svg>
+          <h3>Трёхкомнатная, 84&nbsp;м²</h3>
+          <p class="where">Приморский район, новостройка у Комендантского проспекта</p>
+          <dl>
+            <div><dt>Вид уборки</dt><dd>После ремонта с окнами</dd></div>
+            <div><dt>Кто приезжал</dt><dd>3 человека на 5,5 часа</dd></div>
+            <div><dt>Сумма</dt><dd>23 100 ₽</dd></div>
+          </dl>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="reviews">
+    <div class="wrap">
+      <h2>Что говорят заказчики</h2>
+      <p class="section-lead">Отзывы хозяев тех самых трёх квартир.</p>
+      <div class="reviews">
+        <figure>
+          <blockquote>Заказываю раз в две недели, приезжает одна и та же Наталья. К десяти она на месте, к половине первого уходит. Один раз осталось непротёртым зеркало в прихожей. Написала вечером, утром заехали и доделали.</blockquote>
+          <figcaption><b>Марина</b>Однокомнатная в Купчино, 38&nbsp;м²</figcaption>
+        </figure>
+        <figure>
+          <blockquote>Окна у нас высокие, рамы двойные, сам я их не мыл года три. Приехали вдвоём, управились за полдня, заодно сняли и повесили обратно тюль. За плитой нашли крышку от кастрюли, которую я давно списал.</blockquote>
+          <figcaption><b>Игорь</b>Двухкомнатная на Петроградской стороне, 58&nbsp;м²</figcaption>
+        </figure>
+        <figure>
+          <blockquote>После отделочников пыль лежала даже внутри шкафов. Втроём со своим пылесосом убрали всё за день, с окон сняли плёнку и пену. Царапину на подоконнике от строителей показали сразу, до начала работы. Заплатили, когда обошли все комнаты.</blockquote>
+          <figcaption><b>Алёна и Тимур</b>Трёхкомнатная в Приморском районе, 84&nbsp;м²</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="steps">
+    <div class="wrap">
+      <h2>Как проходит уборка</h2>
+      <p class="section-lead">Предоплаты нет. Вы платите один раз, когда приняли квартиру.</p>
+      <ol class="steps">
+        <li><h3>Заявка и расчёт</h3><p>Перезваниваем, уточняем площадь и состояние квартиры, называем сумму и договариваемся о дне и часе.</p></li>
+        <li><h3>Приезд в назначенное время</h3><p>Клинеры приезжают со своими средствами и оборудованием. От вас нужны только вода и розетка.</p></li>
+        <li><h3>Уборка по чек-листу</h3><p>Идём по списку для вашего вида уборки, комната за комнатой. Список можно посмотреть в таблице цен.</p></li>
+        <li><h3>Приёмка и оплата</h3><p>Вы проходите по квартире вместе со старшим. Замечания исправляем на месте. После этого принимаем оплату картой или наличными.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="request" id="request">
+    <div class="wrap request-grid">
+      <div>
+        <h2>Заказать уборку</h2>
+        <p>Оставьте телефон. Перезвоним, уточним детали и подберём время. Работаем по всему Петербургу в пределах КАД, ближайший свободный день обычно завтра.</p>
+      </div>
+      <form id="request-form">
+        <p class="summary" id="summary"></p>
+        <label>Как к вам обращаться
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+        <label>Телефон
+          <input type="tel" name="phone" autocomplete="tel" placeholder="+7 (___) ___-__-__" required>
+        </label>
+        <button class="btn" type="submit">Заказать уборку</button>
+        <p class="small">Перезвоним в течение получаса с 8:00 до 22:00.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <span>Клининговая команда «Насухо», Санкт-Петербург</span>
+  <span>Ежедневно с 8:00 до 22:00</span>
+  <a href="tel:+78120000000">+7 (812) 000-00-00</a>
+  <span class="demo">Демонстрационный сайт. Компания, объекты, отзывы и цены вымышлены.</span>
+</footer>
+
+<script>
+const RATES = { regular: 90, deep: 180, repair: 250 };
+const NAMES = { regular: 'поддерживающая уборка', deep: 'генеральная уборка', repair: 'уборка после ремонта' };
+const WINDOWS = 25;
+const MIN_ORDER = 3500;
+// Норма работы в сотых долях часа на 1 м²: 100 м² поддерживающей уборки = 6 часов одного человека
+const NORM = { regular: 6, deep: 12, repair: 16 };
+const NORM_WINDOWS = 3;
+
+const calc = document.getElementById('calc');
+const area = document.getElementById('area');
+const rub = n => n.toLocaleString('ru-RU') + ' ₽';
+
+// Один человек на каждые 6 часов работы, но не больше четырёх. Время округляем вверх до получаса, минимум 2 часа.
+function team(kind, m2, win) {
+  const work = m2 * (NORM[kind] + (win ? NORM_WINDOWS : 0));
+  const people = Math.min(4, Math.ceil(work / 600));
+  const hours = Math.max(2, Math.ceil(work / people / 50) / 2);
+  const peopleText = people + (people === 1 ? ' человек' : ' человека');
+  const hoursText = String(hours).replace('.', ',') + (Number.isInteger(hours) && hours >= 5 ? ' часов' : ' часа');
+  return peopleText + ', около ' + hoursText;
+}
+
+function update() {
+  const m2 = Number(area.value);
+  const kind = calc.elements.kind.value;
+  const win = calc.elements.windows.value === 'yes';
+  const raw = m2 * (RATES[kind] + (win ? WINDOWS : 0));
+  const sum = Math.max(MIN_ORDER, raw);
+  const who = team(kind, m2, win);
+
+  document.getElementById('area-out').textContent = m2 + ' м²';
+  document.getElementById('sum').textContent = 'от ' + rub(sum);
+  document.getElementById('team').textContent = (who.startsWith('1 ') ? 'Приедет ' : 'Приедут ') + who;
+  document.getElementById('note').textContent =
+    RATES[kind] + ' ₽ за м²' + (win ? ' и ' + WINDOWS + ' ₽ за м² за окна' : '') +
+    (raw < MIN_ORDER ? '. Это минимальный заказ.' : '. Средства и оборудование включены.');
+  document.getElementById('summary').textContent =
+    'Ваш расчёт: ' + m2 + ' м², ' + NAMES[kind] + (win ? ' с мытьём окон' : '') + ', от ' + rub(sum) + '. ' + who + '.';
+}
+
+calc.addEventListener('input', update);
+update();
+
+const form = document.getElementById('request-form');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const done = document.createElement('p');
+  done.className = 'done';
+  done.setAttribute('role', 'status');
+  done.textContent = 'Заявка на уборку принята. Перезвоним в течение получаса.';
+  form.replaceWith(done);
+});
+</script>
+</body>
+</html>
