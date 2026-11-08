@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Гладь — натяжные потолки в Санкт-Петербурге</title>
+<meta name="description" content="«Гладь»: натяжные потолки в Санкт-Петербурге. Комнату до 25 м² делаем за три часа. Цену называем на замере и записываем в договор. Замер бесплатный.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ceiling: #FBFCFB;
+  --wall: #EDF1F0;
+  --ink: #17282F;
+  --muted: #56676D;
+  --rule: #CBD5D6;
+  --room: #17313A;
+  --room-text: #EEF3F2;
+  --room-muted: #A9BDC1;
+  --petrol: #0E6170;
+  --lamp: #FFC66E;
+  --font: "Geologica", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--wall);
+  color: var(--ink);
+  font-family: var(--font);
+  font-weight: 300;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+h1, h2, h3, p, ol, dl, dd, figure, fieldset, blockquote { margin: 0; padding: 0; }
+fieldset { border: 0; min-width: 0; }
+legend { padding: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--petrol); outline-offset: 3px; }
+.hero :focus-visible, .request :focus-visible { outline-color: var(--lamp); }
+.calc :focus-visible { outline-color: var(--petrol); }
+
+.wrap { max-width: 75rem; margin: 0 auto; padding: 0 1.25rem; }
+
+/* Шапка: это и есть потолок */
+.ceiling { background: var(--ceiling); }
+.top { display: flex; align-items: center; gap: 2.5rem; padding-top: 1.1rem; padding-bottom: 1.1rem; }
+.logo { font-weight: 600; font-size: 1.5rem; line-height: 1; letter-spacing: -0.02em; text-decoration: none; }
+.top nav { display: flex; gap: 1.75rem; margin-right: auto; }
+.top nav a { text-decoration: none; color: var(--muted); }
+.top nav a:hover { color: var(--ink); }
+.phone { font-weight: 500; text-decoration: none; white-space: nowrap; }
+
+/* Кнопка */
+.btn {
+  display: inline-block;
+  border: 0;
+  background: var(--lamp);
+  color: var(--ink);
+  font: 500 1.0625rem/1 var(--font);
+  padding: 1.05rem 1.7rem;
+  border-radius: 999px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover { background: #FFD591; }
+
+/* Первый экран: комната под потолком */
+.hero { position: relative; overflow: hidden; background: var(--room); color: var(--room-text); }
+.hero .wrap { position: relative; z-index: 1; }
+.lamps { position: absolute; inset: 0; display: flex; pointer-events: none; }
+.lamp { position: relative; flex: 1 1 0; min-width: 0; }
+.lamp::before {
+  content: "";
+  position: absolute; top: -3px; left: 50%;
+  width: min(1.6rem, 70%); height: 7px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #FFF4DC;
+  box-shadow: 0 0 16px 5px rgba(255, 198, 110, 0.55);
+}
+.lamp::after {
+  content: "";
+  position: absolute; top: 0; left: 50%;
+  width: 26rem; height: 40rem;
+  transform: translateX(-50%);
+  clip-path: polygon(47% 0, 53% 0, 100% 100%, 0 100%);
+  background: linear-gradient(to bottom, rgba(255, 198, 110, var(--glow)), rgba(255, 198, 110, 0) 88%);
+}
+.lamps.boot .lamp { animation: on 0.5s ease-out both; animation-delay: calc(var(--i) * 90ms + 200ms); }
+@keyframes on { from { opacity: 0; } }
+
+h1 {
+  font-weight: 300;
+  font-size: clamp(2.4rem, 7vw, 6rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  max-width: 17ch;
+  padding-top: 4.5rem;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 3.5rem;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+}
+.lead { font-size: 1.25rem; line-height: 1.5; max-width: 28em; }
+.facts { margin-top: 2.5rem; display: grid; gap: 0.9rem; }
+.facts div { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; align-items: baseline; }
+.facts dt { font-weight: 500; font-size: 1.375rem; line-height: 1.2; color: var(--lamp); white-space: nowrap; }
+.facts dd { color: var(--room-muted); }
+
+/* Калькулятор */
+.calc { background: var(--ceiling); color: var(--ink); padding: 2rem; }
+.calc h2 { font: 500 1.25rem/1.3 var(--font); margin-bottom: 1.5rem; }
+.field { margin-bottom: 1.5rem; }
+.field-name { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-weight: 400; margin-bottom: 0.6rem; }
+.field-name output { font-weight: 500; font-size: 1.375rem; line-height: 1; white-space: nowrap; }
+input[type="range"] { width: 100%; accent-color: var(--petrol); margin: 0; }
+.seg { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.seg label { cursor: pointer; }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg span { display: block; padding: 0.5rem 1rem; border: 1px solid var(--rule); border-radius: 999px; }
+.seg input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--ceiling); }
+.seg input:focus-visible + span { outline: 3px solid var(--petrol); outline-offset: 3px; }
+.total { border-top: 1px solid var(--rule); padding-top: 1.25rem; margin-top: 0.5rem; }
+.total-sum { font-weight: 300; font-size: clamp(2.5rem, 5vw, 3.75rem); line-height: 1; letter-spacing: -0.035em; }
+.total-note { color: var(--muted); margin: 0.6rem 0 1.5rem; }
+
+/* Разделы */
+.section { padding-top: 5.5rem; padding-bottom: 5.5rem; }
+.section + .section { padding-top: 1rem; }
+.section h2, .request h2 {
+  font-weight: 300;
+  font-size: clamp(2rem, 4.4vw, 3.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  max-width: 20ch;
+  margin-bottom: 1rem;
+}
+.section-lead { max-width: 36em; color: var(--muted); margin-bottom: 2.5rem; }
+
+/* Цены */
+table { width: 100%; border-collapse: collapse; background: var(--ceiling); }
+th, td { text-align: left; vertical-align: top; padding: 1rem 1.5rem; border-bottom: 1px solid var(--wall); }
+thead th { font-weight: 400; color: var(--muted); font-size: 0.9375rem; }
+tbody th { font-weight: 500; width: 26%; }
+tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+.price { font-weight: 500; font-size: 1.25rem; line-height: 1.35; white-space: nowrap; text-align: right; }
+thead th:last-child { text-align: right; }
+
+/* Объекты */
+.objects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; }
+.plan { display: block; width: 100%; height: auto; background: var(--room); margin-bottom: 1.25rem; }
+.plan text { font: 300 8.5px var(--font); fill: var(--room-muted); }
+.plan .walls { fill: #1F3F4A; stroke: var(--room-text); stroke-width: 1.5; }
+.plan .spot { fill: #FFF4DC; }
+.plan .halo { fill: var(--lamp); opacity: 0.22; }
+.objects h3 { font: 500 1.25rem/1.3 var(--font); margin-bottom: 0.25rem; }
+.objects .where { color: var(--muted); margin-bottom: 1rem; }
+.objects dl div { display: flex; justify-content: space-between; gap: 1rem; padding: 0.5rem 0; border-top: 1px solid var(--rule); }
+.objects dt { color: var(--muted); }
+.objects dd { font-weight: 400; text-align: right; }
+
+/* Отзывы */
+.reviews figure { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 2.5rem; padding: 1.75rem 0; border-top: 1px solid var(--rule); }
+.reviews figcaption { color: var(--muted); }
+.reviews figcaption b { display: block; font-weight: 500; font-size: 1.25rem; color: var(--ink); }
+.reviews blockquote { font-size: 1.1875rem; line-height: 1.55; max-width: 34em; }
+
+/* Этапы */
+.steps { list-style: none; counter-reset: step; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2.5rem; }
+.steps li { counter-increment: step; }
+.steps li::before { content: counter(step); display: block; font-weight: 300; font-size: 3.5rem; line-height: 1; letter-spacing: -0.04em; color: var(--petrol); margin-bottom: 1rem; }
+.steps h3 { font: 500 1.125rem/1.35 var(--font); margin-bottom: 0.4rem; }
+.steps p { color: var(--muted); font-size: 0.9375rem; }
+#steps { padding-bottom: 5.5rem; }
+
+/* Заявка */
+.request { background: var(--room); color: var(--room-text); }
+.request-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3.5rem; padding-top: 5rem; padding-bottom: 5rem; }
+.request p { color: var(--room-muted); max-width: 30em; }
+.request form { display: grid; gap: 1.25rem; }
+.request label { display: grid; gap: 0.4rem; font-weight: 400; }
+.request input[type="text"], .request input[type="tel"] {
+  font: 300 1.0625rem/1.2 var(--font);
+  padding: 0.9rem 1rem;
+  border: 1px solid #55717A;
+  border-radius: 0;
+  background: transparent;
+  color: var(--room-text);
+}
+.request input::placeholder { color: #86A0A6; }
+.request .summary { color: var(--lamp); }
+.request .btn { justify-self: start; }
+.request .small { font-size: 0.875rem; }
+.request .done { font-size: 1.25rem; color: var(--lamp); }
+
+/* Подвал */
+.foot { display: flex; flex-wrap: wrap; gap: 1rem 3rem; padding-top: 2rem; padding-bottom: 2rem; color: var(--muted); font-size: 0.9375rem; }
+.foot .demo { margin-left: auto; }
+
+@media (max-width: 60rem) {
+  .hero-grid, .request-grid { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+  .objects { grid-template-columns: minmax(0, 1fr); max-width: 30rem; }
+  .reviews figure { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .top nav { display: none; }
+  .top { justify-content: space-between; gap: 1rem; }
+  .lamp::after { width: 16rem; height: 30rem; }
+}
+@media (max-width: 34rem) {
+  h1 { padding-top: 3rem; }
+  .steps { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .calc { padding: 1.25rem; }
+  thead { display: none; }
+  table { background: none; }
+  tbody tr, tbody th, tbody td { display: block; width: auto; }
+  tbody tr { background: var(--ceiling); padding: 1rem 1.25rem; margin-bottom: 0.5rem; }
+  tbody th, tbody td { border: 0; padding: 0.15rem 0; }
+  .price { text-align: left; }
+  .section { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .request-grid { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .hero-grid { padding-top: 2rem; padding-bottom: 3.5rem; }
+  .facts div { grid-template-columns: 5.5rem 1fr; }
+  #steps { padding-bottom: 3.5rem; }
+  .foot .demo { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .lamps.boot .lamp { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="ceiling">
+  <header class="wrap top">
+    <a class="logo" href="#">Гладь</a>
+    <nav aria-label="Разделы">
+      <a href="#prices">Цены</a>
+      <a href="#objects">Объекты</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#steps">Этапы</a>
+    </nav>
+    <a class="phone" href="tel:+78120000000">+7 (812) 000-00-00</a>
+  </header>
+</div>
+
+<main>
+  <section class="hero">
+    <div class="lamps boot" id="lamps" aria-hidden="true"></div>
+
+    <div class="wrap">
+      <h1>Натяжной потолок в&nbsp;комнате за&nbsp;три&nbsp;часа</h1>
+    </div>
+
+    <div class="wrap hero-grid">
+      <div>
+        <p class="lead">Мы «Гладь», две бригады монтажников в Петербурге. На замере называем цену и записываем её в договор. Мебель выносить не нужно, после работы убираем за собой.</p>
+        <dl class="facts">
+          <div><dt>8 лет</dt><dd>натягиваем потолки в городе и ближайших пригородах</dd></div>
+          <div><dt>10 лет</dt><dd>гарантии на полотно</dd></div>
+          <div><dt>2 года</dt><dd>гарантии на монтаж и подключение светильников</dd></div>
+        </dl>
+      </div>
+
+      <form class="calc" id="calc" aria-labelledby="calc-title">
+        <h2 id="calc-title">Сколько стоит потолок в вашей комнате</h2>
+
+        <div class="field">
+          <label class="field-name" for="area">Площадь комнаты <output id="area-out" for="area">18 м²</output></label>
+          <input type="range" id="area" min="5" max="60" step="1" value="18">
+        </div>
+
+        <fieldset class="field">
+          <legend class="field-name">Полотно</legend>
+          <div class="seg">
+            <label><input type="radio" name="kind" value="matte" checked><span>Матовое</span></label>
+            <label><input type="radio" name="kind" value="satin"><span>Сатиновое</span></label>
+            <label><input type="radio" name="kind" value="gloss"><span>Глянцевое</span></label>
+            <label><input type="radio" name="kind" value="fabric"><span>Тканевое</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label class="field-name" for="spots">Точечные светильники <output id="spots-out" for="spots">6 шт.</output></label>
+          <input type="range" id="spots" min="0" max="20" step="1" value="6">
+        </div>
+
+        <div class="total" aria-live="polite">
+          <div class="total-sum" id="sum"></div>
+          <p class="total-note" id="note"></p>
+        </div>
+        <a class="btn" href="#request">Вызвать замерщика</a>
+      </form>
+    </div>
+  </section>
+
+  <section class="section" id="prices">
+    <div class="wrap">
+      <h2>Цены за метр и за штуку</h2>
+      <p class="section-lead">Калькулятор считает по этим же ценам. Точную сумму называем после замера, и она попадает в договор.</p>
+      <table>
+        <thead>
+          <tr><th scope="col">Позиция</th><th scope="col">Что это</th><th scope="col">Цена</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Матовое полотно</th>
+            <td>Выглядит как ровно покрашенный потолок. Не бликует, подходит в любую комнату.</td>
+            <td class="price">650 ₽/м²</td>
+          </tr>
+          <tr>
+            <th scope="row">Сатиновое полотно</th>
+            <td>Мягкий блеск без отражений. Чаще всего берут в спальню и гостиную.</td>
+            <td class="price">750 ₽/м²</td>
+          </tr>
+          <tr>
+            <th scope="row">Глянцевое полотно</th>
+            <td>Отражает комнату и свет. Хорошо смотрится в прихожей и ванной.</td>
+            <td class="price">800 ₽/м²</td>
+          </tr>
+          <tr>
+            <th scope="row">Тканевое полотно</th>
+            <td>Полиэстер с пропиткой. Натягиваем без нагрева, запаха нет, шов не нужен при ширине до 5 м.</td>
+            <td class="price">1 900 ₽/м²</td>
+          </tr>
+          <tr>
+            <th scope="row">Замер, профиль, монтаж</th>
+            <td>Выезд замерщика, алюминиевый профиль по периметру, вставка в зазор у стены, работа бригады и уборка.</td>
+            <td class="price">входит в цену метра</td>
+          </tr>
+          <tr>
+            <th scope="row">Установка светильника</th>
+            <td>Ставим закладную, выводим провод и подключаем. Сам светильник покупаете вы.</td>
+            <td class="price">450 ₽/шт.</td>
+          </tr>
+          <tr>
+            <th scope="row">Обход трубы</th>
+            <td>Вырезаем отверстие под стояк отопления и закрываем его кольцом.</td>
+            <td class="price">350 ₽/шт.</td>
+          </tr>
+          <tr>
+            <th scope="row">Ниша под карниз</th>
+            <td>Прячем карниз за полотном, шторы выходят прямо из потолка.</td>
+            <td class="price">900 ₽/пог. м</td>
+          </tr>
+          <tr>
+            <th scope="row">Минимальный заказ</th>
+            <td>Если по расчёту выходит меньше, например в маленькой прихожей, берём эту сумму.</td>
+            <td class="price">6 000 ₽</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" id="objects">
+    <div class="wrap">
+      <h2>Три комнаты, которые мы сделали этой осенью</h2>
+      <p class="section-lead">На планах вид на потолок сверху, точками отмечены светильники. Сумма в договоре и сумма при расчёте совпали на каждом объекте.</p>
+      <div class="objects">
+
+        <article>
+          <svg class="plan" viewBox="0 0 200 140" role="img" aria-label="План потолка спальни: шесть светильников в два ряда">
+            <rect class="walls" x="48" y="20" width="104" height="91"/>
+            <g class="halo"><circle cx="65" cy="46" r="9"/><circle cx="100" cy="46" r="9"/><circle cx="135" cy="46" r="9"/><circle cx="65" cy="85" r="9"/><circle cx="100" cy="85" r="9"/><circle cx="135" cy="85" r="9"/></g>
+            <g class="spot"><circle cx="65" cy="46" r="2.5"/><circle cx="100" cy="46" r="2.5"/><circle cx="135" cy="46" r="2.5"/><circle cx="65" cy="85" r="2.5"/><circle cx="100" cy="85" r="2.5"/><circle cx="135" cy="85" r="2.5"/></g>
+            <text x="100" y="128" text-anchor="middle">4,0 × 3,5 м</text>
+          </svg>
+          <h3>Спальня, 14 м²</h3>
+          <p class="where">Кудрово, Европейский проспект</p>
+          <dl>
+            <div><dt>Полотно</dt><dd>Матовое</dd></div>
+            <div><dt>Светильники</dt><dd>6 шт.</dd></div>
+            <div><dt>Монтаж</dt><dd>3 часа</dd></div>
+            <div><dt>Сумма по договору</dt><dd>11 800 ₽</dd></div>
+          </dl>
+        </article>
+
+        <article>
+          <svg class="plan" viewBox="0 0 200 140" role="img" aria-label="План потолка кухни-гостиной: двенадцать светильников">
+            <path class="walls" d="M19 20 H181 V56 H109 V92 H19 Z"/>
+            <g class="halo"><circle cx="34" cy="32" r="9"/><circle cx="64" cy="32" r="9"/><circle cx="94" cy="32" r="9"/><circle cx="34" cy="56" r="9"/><circle cx="64" cy="56" r="9"/><circle cx="94" cy="56" r="9"/><circle cx="34" cy="80" r="9"/><circle cx="64" cy="80" r="9"/><circle cx="94" cy="80" r="9"/><circle cx="121" cy="38" r="9"/><circle cx="145" cy="38" r="9"/><circle cx="169" cy="38" r="9"/></g>
+            <g class="spot"><circle cx="34" cy="32" r="2.5"/><circle cx="64" cy="32" r="2.5"/><circle cx="94" cy="32" r="2.5"/><circle cx="34" cy="56" r="2.5"/><circle cx="64" cy="56" r="2.5"/><circle cx="94" cy="56" r="2.5"/><circle cx="34" cy="80" r="2.5"/><circle cx="64" cy="80" r="2.5"/><circle cx="94" cy="80" r="2.5"/><circle cx="121" cy="38" r="2.5"/><circle cx="145" cy="38" r="2.5"/><circle cx="169" cy="38" r="2.5"/></g>
+            <text x="145" y="72" text-anchor="middle">кухня 4 × 2 м</text>
+            <text x="64" y="108" text-anchor="middle">гостиная 5 × 4 м</text>
+          </svg>
+          <h3>Кухня-гостиная, 28 м²</h3>
+          <p class="where">Мурино, Охтинская аллея, у метро Девяткино</p>
+          <dl>
+            <div><dt>Полотно</dt><dd>Сатиновое</dd></div>
+            <div><dt>Светильники</dt><dd>12 шт.</dd></div>
+            <div><dt>Монтаж</dt><dd>1 день</dd></div>
+            <div><dt>Сумма по договору</dt><dd>26 400 ₽</dd></div>
+          </dl>
+        </article>
+
+        <article>
+          <svg class="plan" viewBox="0 0 200 140" role="img" aria-label="План потолка детской: четыре светильника по углам">
+            <rect class="walls" x="48" y="30" width="104" height="72"/>
+            <g class="halo"><circle cx="74" cy="48" r="9"/><circle cx="126" cy="48" r="9"/><circle cx="74" cy="84" r="9"/><circle cx="126" cy="84" r="9"/></g>
+            <g class="spot"><circle cx="74" cy="48" r="2.5"/><circle cx="126" cy="48" r="2.5"/><circle cx="74" cy="84" r="2.5"/><circle cx="126" cy="84" r="2.5"/></g>
+            <text x="100" y="120" text-anchor="middle">4,0 × 2,75 м</text>
+          </svg>
+          <h3>Детская, 11 м²</h3>
+          <p class="where">Купчино, Бухарестская улица</p>
+          <dl>
+            <div><dt>Полотно</dt><dd>Тканевое</dd></div>
+            <div><dt>Светильники</dt><dd>4 шт.</dd></div>
+            <div><dt>Монтаж</dt><dd>3 часа</dd></div>
+            <div><dt>Сумма по договору</dt><dd>22 700 ₽</dd></div>
+          </dl>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="reviews">
+    <div class="wrap">
+      <h2>Что говорят заказчики</h2>
+      <p class="section-lead">Отзывы хозяев тех самых трёх комнат.</p>
+      <div class="reviews">
+        <figure>
+          <figcaption><b>Марина</b>Спальня в Кудрово, 14 м²</figcaption>
+          <blockquote>Приехали вдвоём к десяти, в час уже пылесосили. Шкаф и кровать не двигали, накрыли плёнкой. Запах от полотна был, выветрился за два дня. Об этом предупредили ещё на замере.</blockquote>
+        </figure>
+        <figure>
+          <figcaption><b>Алексей</b>Кухня-гостиная в Мурино, 28 м²</figcaption>
+          <blockquote>Хотел глянец, замерщик отговорил: над кухней в нём отражается вся столешница. Взял сатин. Двенадцать светильников разметили по моему чертежу, один сдвинули на десять сантиметров из-за балки и сказали об этом до сверления. В договоре стояло 26 400, столько и заплатил.</blockquote>
+        </figure>
+        <figure>
+          <figcaption><b>Ирина Павловна</b>Детская в Купчино, 11 м²</figcaption>
+          <blockquote>Для детской выбрала тканевое, хотя оно почти втрое дороже. Его натягивают без тепловой пушки, комнату не грели, свежие обои остались целы. Через месяц замигал один светильник. Мастер приехал на следующий день, дело оказалось в лампе. Денег за выезд не взял.</blockquote>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="steps">
+    <div class="wrap">
+      <h2>Как мы работаем</h2>
+      <p class="section-lead">От звонка до готового потолка обычно проходит три или четыре дня.</p>
+      <ol class="steps">
+        <li><h3>Замер</h3><p>Замерщик приезжает бесплатно, с образцами полотен. Меряет комнату лазером и вместе с вами размечает светильники.</p></li>
+        <li><h3>Договор с ценой</h3><p>Считаем сумму на месте и записываем в договор. Предоплаты нет, после подписания цена не меняется.</p></li>
+        <li><h3>Монтаж</h3><p>Крепим профиль, ставим закладные под светильники, натягиваем полотно. Комната до 25 м² занимает три часа.</p></li>
+        <li><h3>Приёмка и гарантия</h3><p>Включаем свет, вместе осматриваем потолок и углы. Вы платите после приёмки и получаете гарантийный талон.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="request" id="request">
+    <div class="wrap request-grid">
+      <div>
+        <h2>Вызвать замерщика</h2>
+        <p>Приедем в удобный день, покажем образцы и назовём точную цену. Выезд бесплатный по городу, в Кудрово, Мурино и другие ближайшие пригороды.</p>
+      </div>
+      <form id="request-form">
+        <p class="summary" id="summary"></p>
+        <label>Как к вам обращаться
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+        <label>Телефон
+          <input type="tel" name="phone" autocomplete="tel" placeholder="+7 (___) ___-__-__" required>
+        </label>
+        <button class="btn" type="submit">Вызвать замерщика</button>
+        <p class="small">Перезвоним в течение часа с 9:00 до 21:00.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <span>«Гладь», натяжные потолки, Санкт-Петербург</span>
+  <span>Ежедневно с 9:00 до 21:00</span>
+  <a href="tel:+78120000000">+7 (812) 000-00-00</a>
+  <span class="demo">Демонстрационный сайт. Компания, объекты, отзывы и цены вымышлены.</span>
+</footer>
+
+<script>
+const RATES = { matte: 650, satin: 750, gloss: 800, fabric: 1900 };
+const NAMES = { matte: 'матовое', satin: 'сатиновое', gloss: 'глянцевое', fabric: 'тканевое' };
+const SPOT = 450;
+const MIN = 6000;
+
+const calc = document.getElementById('calc');
+const area = document.getElementById('area');
+const spots = document.getElementById('spots');
+const lamps = document.getElementById('lamps');
+const rub = n => n.toLocaleString('ru-RU') + ' ₽';
+
+function light(n) {
+  lamps.style.setProperty('--glow', Math.min(0.3, 1.5 / n).toFixed(3));
+  while (lamps.children.length > n) lamps.lastChild.remove();
+  while (lamps.children.length < n) {
+    const lamp = document.createElement('i');
+    lamp.className = 'lamp';
+    lamp.style.setProperty('--i', lamps.children.length);
+    lamps.append(lamp);
+  }
+}
+
+function update() {
+  const m2 = Number(area.value);
+  const n = Number(spots.value);
+  const kind = calc.elements.kind.value;
+  const raw = m2 * RATES[kind] + n * SPOT;
+  const sum = Math.max(raw, MIN);
+  const term = m2 <= 25 ? '3 часа' : '1 день';
+
+  document.getElementById('area-out').textContent = m2 + ' м²';
+  document.getElementById('spots-out').textContent = n + ' шт.';
+  document.getElementById('sum').textContent = 'от ' + rub(sum);
+  document.getElementById('note').textContent =
+    (raw < MIN ? 'Это минимальный заказ. ' : rub(RATES[kind]) + ' за м²' + (n ? ' и ' + rub(SPOT) + ' за светильник. ' : '. ')) +
+    'Монтаж займёт ' + term + '. Трубы и карниз посчитаем на замере.';
+  document.getElementById('summary').textContent =
+    'Ваш расчёт: ' + m2 + ' м², ' + NAMES[kind] + ' полотно, ' +
+    (n ? 'светильников: ' + n : 'без светильников') + ', от ' + rub(sum) + ', монтаж ' + term + '.';
+  light(n);
+}
+
+calc.addEventListener('input', () => { lamps.classList.remove('boot'); update(); });
+update();
+
+const form = document.getElementById('request-form');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const done = document.createElement('p');
+  done.className = 'done';
+  done.setAttribute('role', 'status');
+  done.textContent = 'Заявка на замер принята. Перезвоним в течение часа.';
+  form.replaceWith(done);
+});
+</script>
+</body>
+</html>
